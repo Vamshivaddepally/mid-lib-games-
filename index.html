@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mad Lib Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-top: 50px;
+      color: #333;
+      text-shadow: 1px 1px 2px #fff;
+    }
+
+    form {
+      background-color: #ffffffcc;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #output {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 30px auto;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      font-size: 18px;
+      color: #333;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mad Lib Game </h1>
+
+  <form id="madLibForm">
+    <label>Adjective:
+      <input type="text" name="adjective" required>
+    </label>
+    <label>Noun:
+      <input type="text" name="noun" required>
+    </label>
+    <label>Verb:
+      <input type="text" name="verb" required>
+    </label>
+    <label>Place:
+      <input type="text" name="place" required>
+    </label>
+    <label>Emotion:
+      <input type="text" name="emotion" required>
+    </label>
+    <button type="submit">Generate Mad Lib</button>
+  </form>
+
+  <div id="output"></div>
+
+  <footer>
+    <p>Last updated: <span id="lastModified"></span></p>
+  </footer>
+
+  <script>
+    // Display last modified date
+    document.getElementById('lastModified').textContent = document.lastModified;
+
+    // Handle form submission
+    document.getElementById('madLibForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const adjective = this.adjective.value;
+      const noun = this.noun.value;
+      const verb = this.verb.value;
+      const place = this.place.value;
+      const emotion = this.emotion.value;
+
+      const madLib = `One ${adjective} ${noun} decided to ${verb} at the ${place} while feeling very ${emotion}.`;
+
+      document.getElementById('output').innerHTML = `<h3>Your Mad Lib:</h3><p>${madLib}</p>`;
+    });
+  </script>
+</body>
+</html>
